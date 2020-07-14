@@ -16,9 +16,13 @@ class RockCounter extends Component {
   };
 
   decrease = () => {
-    this.setState({
-      rocks: this.state.rocks - 1,
-    });
+    if (this.state.rocks !== 0) {
+      this.setState({
+        rocks: this.state.rocks - 1,
+      });
+    } else {
+      alert(`You can't do that!`);
+    }
   };
 
   reset = () => {
