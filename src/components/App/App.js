@@ -24,28 +24,6 @@ class App extends Component {
     }
   }
 
-  // Why do both of these syntax work?
-  testMethod(props) {
-    console.log(`make methods, not meth`, props);
-  }
-
-  // testMethod = (props) => {
-  //   console.log(`make methods, not meth`, props);
-  // };
-
-  // Ok, WHY DOES THIS ONE WORK BUT 'HANDLECOUNT' DOES NOT?!?!? (when line 12 is commented out)
-  anotherMethod = (props) => {
-    if (props === '+') {
-      this.setState({
-        totalCount: this.state.totalCount + 1,
-      });
-    } else {
-      this.setState({
-        totalCount: this.state.totalCount - 1,
-      });
-    }
-  };
-
   render() {
     return (
       <div>
@@ -54,16 +32,16 @@ class App extends Component {
           <p>
             "You ain't ever worked a day until you worked a day picking rocks." - Mike Schlangen
           </p>
-          <h3>{this.state.totalCount}</h3>
+          <h3>Total rocks picked: {this.state.totalCount}</h3>
         </header>
         <h2>Luke</h2>
         <RockCounter GlobalCounter={this.handleCount} />
         <h2>JJ</h2>
         <RockCounter GlobalCounter={this.handleCount} />
         <h2>Sam</h2>
-        <RockCounter GlobalCounter={this.anotherMethod} />
+        <RockCounter GlobalCounter={this.handleCount} />
         <h2>Pete</h2>
-        <RockCounter GlobalCounter={this.testMethod} />
+        <RockCounter GlobalCounter={this.handleCount} />
       </div>
     );
   }
