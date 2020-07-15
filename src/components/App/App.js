@@ -6,6 +6,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { totalCount: 0 };
+
+    // Below is where the method "handleCount" is declared.
+    // I don't understand the right-hand side of this declaration.
     this.handleCount = this.handleCount.bind(this);
   }
 
@@ -20,6 +23,28 @@ class App extends Component {
       });
     }
   }
+
+  // Why do both of these syntax work?
+  testMethod(props) {
+    console.log(`make methods, not meth`, props);
+  }
+
+  // testMethod = (props) => {
+  //   console.log(`make methods, not meth`, props);
+  // };
+
+  // Ok, WHY DOES THIS ONE WORK BUT 'HANDLECOUNT' DOES NOT?!?!? (when line 12 is commented out)
+  anotherMethod = (props) => {
+    if (props === '+') {
+      this.setState({
+        totalCount: this.state.totalCount + 1,
+      });
+    } else {
+      this.setState({
+        totalCount: this.state.totalCount - 1,
+      });
+    }
+  };
 
   render() {
     return (
@@ -36,9 +61,9 @@ class App extends Component {
         <h2>JJ</h2>
         <RockCounter GlobalCounter={this.handleCount} />
         <h2>Sam</h2>
-        <RockCounter GlobalCounter={this.handleCount} />
+        <RockCounter GlobalCounter={this.anotherMethod} />
         <h2>Pete</h2>
-        <RockCounter GlobalCounter={this.handleCount} />
+        <RockCounter GlobalCounter={this.testMethod} />
       </div>
     );
   }

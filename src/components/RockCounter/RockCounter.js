@@ -9,7 +9,8 @@ class RockCounter extends Component {
       done: null,
     };
   }
-
+  // Why do these methods work but handleCount in App.js doesn't when written the same way?
+  // Is it because they don't take any arguments? No.
   increase = () => {
     this.setState(
       {
